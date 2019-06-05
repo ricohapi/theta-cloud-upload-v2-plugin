@@ -1,0 +1,84 @@
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>THETA360 setting</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.i18n.properties.js"></script>
+    <script type="text/javascript" src="js/i18n.js"></script>
+    <meta name="viewport" content="width=750">
+    <link rel="stylesheet" type="text/css" href="css/selection_design.css">
+</head>
+
+<body>
+<script>
+
+      $(function(){
+        /* Embed multilingual strings */
+        updateMessage();
+
+        changeApiTypeCheck($("#api_type").val());
+      });
+
+      function cancel() {
+        window.location.href = "/index.html";
+      }
+
+      function done() {
+        $("#api_type_form").submit();
+      }
+
+      function changeApiTypeCheck(api_type) {
+        $('#check_api_type_google_photo').hide();
+        $('#check_api_type_google_drive').hide();
+        if (api_type == "google_photo") {
+            $('#check_api_type_google_photo').show();
+        } else {
+            $('#check_api_type_google_drive').show();
+        }
+      }
+
+      function selectApiType(timeout) {
+        $("#api_type").val(timeout);
+        changeApiTypeCheck(timeout);
+      }
+
+
+</script>
+
+<div id="body_box" class="body_box">
+    <div id="head_box" class="head_box">
+        <button id="cancel_button" type="button" onclick="cancel()"
+                class="i18n_CANCEL head_button cancel_button"></button>
+        <label id="head_label" class="i18n_UPLOAD_DESTINATION head_label"></label>
+        <button id="done_button" type="button" onclick="done()"
+                class="i18n_DONE head_button done_button"></button>
+    </div>
+
+    <div id="api_type_box" class="main_box">
+        <table id="api_type_table" class="main_table">
+            <tr class="bottom_border" onclick="selectApiType('google_photo')">
+                <td id="api_type_table_td_1" class="main_table_td_1">
+                    <label id="api_type_google_photo" class="i18n_GOOGLE_PHOTO item_label"></label>
+                </td>
+                <td id="api_type_table_td_2" class="main_table_td_2">
+                    <img id="check_api_type_google_photo" src="img/101.png" class="check_icon">
+                </td>
+            </tr>
+            <tr onclick="selectApiType('google_drive')">
+                <td>
+                    <label id="api_type_google_drive" class="i18n_GOOGLE_DRIVE item_label"></label>
+                </td>
+                <td>
+                    <img id="check_api_type_google_drive" src="img/101.png" class="check_icon">
+                </td>
+            </tr>
+        </table>
+
+        <form id="api_type_form" action="/index.html" method="post" hidden>
+            <input id="api_type" name="api_type" value="#API_TYPE#"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+

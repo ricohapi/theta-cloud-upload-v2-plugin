@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">File cloud upload V2</string>
+    <string name="oled_middle">File Cloud Upload V2</string>
+    <string name="oled_bottom_ready">PUSH SHUTTER BUTTON TO START UPLOADING</string>
+    <string name="oled_bottom_transferring">UPLOADING</string>
+    <string name="oled_bottom_error">ERROR: </string>
+</resources>
